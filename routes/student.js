@@ -17,6 +17,11 @@ router.get('/', function(req, res, next) {
   );
 });
 
+router.post('/', (req, res, next) => {
+  const newStudent = Student.create(req.body);
+  res.json(newStudent);
+});
+
 router.put('/:id', function(req, res, next) {
   Student.update(req.body, {
     where: {
