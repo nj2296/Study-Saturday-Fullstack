@@ -10,9 +10,11 @@ export default class Main extends Component {
     this.state = {
       students: [],
       selectedStudent: {},
+      showForm: false,
     };
 
     this.selectStudent = this.selectStudent.bind(this);
+    this.handleToggleClick = this.handleToggleClick.bind(this);
   }
 
   componentDidMount() {
@@ -35,6 +37,12 @@ export default class Main extends Component {
     });
   }
 
+  handleToggleClick() {
+    this.setState(state => ({
+      showForm: !state.showForm,
+    }));
+  }
+
   render() {
     return (
       <div>
@@ -51,6 +59,12 @@ export default class Main extends Component {
             selectStudent={this.selectStudent}
           />
         </table>
+        <div className="form-toggle-button">
+          <button type="button" onClick={this.state.handleToggleClick}>
+            Add New Student
+            {this.state.showForm ? 'Show' : 'Hide'}
+          </button>
+        </div>
         {this.state.selectedStudent.id ? (
           <SingleStudent student={this.state.selectedStudent} />
         ) : null}
