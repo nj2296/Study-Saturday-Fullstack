@@ -16,6 +16,7 @@ export default class Main extends Component {
 
     this.selectStudent = this.selectStudent.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.addStudent = this.addStudent.bind(this);
   }
 
   componentDidMount() {
@@ -45,13 +46,28 @@ export default class Main extends Component {
     });
   }
 
+  async addStudent(newStudent) {
+    try {
+      const res = await axios.post('/student', newStudent);
+      const student = res.data;
+      this.setState({
+        students: [...this.state.students, student],
+        showStudent: false, // this will hide the New Student Form again after sumbitting!
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   render() {
     console.log('this is the state in main', this.state);
     return (
       <div>
         <h1>Students</h1>
         <button onClick={this.handleClick}>Add Student</button>
-        {this.state.showStudent ? <NewStudentForm /> : null}
+        {this.state.showStudent ? (
+          <NewStudentForm addStudent={this.addStudent} />
+        ) : null}
         <table>
           <thead>
             <tr>
