@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import NewStudentForm from './NewStudentForm';
 
 import StudentList from './StudentList.js';
 import SingleStudent from './SingleStudent.js';
@@ -37,16 +38,20 @@ export default class Main extends Component {
     });
   }
 
-  handleToggleClick() {
-    this.setState(state => ({
-      showForm: !state.showForm,
-    }));
+  handleToggleClick(event) {
+    return this.setState({
+      showForm: !this.state.showForm,
+    });
   }
 
   render() {
     return (
       <div>
         <h1>Students</h1>
+        <button type="button" onClick={this.state.handleToggleClick}>
+          Add New Student
+          {this.state.showForm ? <NewStudentForm /> : null}
+        </button>
         <table>
           <thead>
             <tr>
@@ -59,12 +64,7 @@ export default class Main extends Component {
             selectStudent={this.selectStudent}
           />
         </table>
-        <div className="form-toggle-button">
-          <button type="button" onClick={this.state.handleToggleClick}>
-            Add New Student
-            {this.state.showForm ? 'Show' : 'Hide'}
-          </button>
-        </div>
+        <div className="form-toggle-button" />
         {this.state.selectedStudent.id ? (
           <SingleStudent student={this.state.selectedStudent} />
         ) : null}
