@@ -13,9 +13,18 @@ export default class NewStudentForm extends Component {
   render() {
     return (
       <form>
-        <input type="text" name="firstName" />
-        <input type="text" name="lastName" />
-        <input type="text" name="email" />
+        <label>
+          First Name
+          <input type="text" name="firstName" />
+        </label>
+        <label>
+          Last Name
+          <input type="text" name="lastName" />
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" />
+        </label>
         <button type="submit">Submit</button>
       </form>
     );

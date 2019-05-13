@@ -35387,10 +35387,6 @@ var _axios = __webpack_require__(358);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _NewStudentForm = __webpack_require__(379);
-
-var _NewStudentForm2 = _interopRequireDefault(_NewStudentForm);
-
 var _StudentList = __webpack_require__(377);
 
 var _StudentList2 = _interopRequireDefault(_StudentList);
@@ -35398,6 +35394,10 @@ var _StudentList2 = _interopRequireDefault(_StudentList);
 var _SingleStudent = __webpack_require__(378);
 
 var _SingleStudent2 = _interopRequireDefault(_SingleStudent);
+
+var _NewStudentForm = __webpack_require__(379);
+
+var _NewStudentForm2 = _interopRequireDefault(_NewStudentForm);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -35503,10 +35503,10 @@ var Main = function (_Component) {
         ),
         _react2.default.createElement(
           'button',
-          { type: 'button', onClick: this.state.handleToggleClick },
-          'Add New Student',
-          this.state.showForm ? _react2.default.createElement(_NewStudentForm2.default, null) : null
+          { type: 'button', onClick: this.handleToggleClick },
+          'Add New Student'
         ),
+        this.state.showForm ? _react2.default.createElement(_NewStudentForm2.default, null) : null,
         _react2.default.createElement(
           'table',
           null,
@@ -36620,9 +36620,24 @@ var NewStudentForm = function (_Component) {
       return _react2.default.createElement(
         'form',
         null,
-        _react2.default.createElement('input', { type: 'text', name: 'firstName' }),
-        _react2.default.createElement('input', { type: 'text', name: 'lastName' }),
-        _react2.default.createElement('input', { type: 'text', name: 'email' }),
+        _react2.default.createElement(
+          'label',
+          null,
+          'First Name',
+          _react2.default.createElement('input', { type: 'text', name: 'firstName' })
+        ),
+        _react2.default.createElement(
+          'label',
+          null,
+          'Last Name',
+          _react2.default.createElement('input', { type: 'text', name: 'lastName' })
+        ),
+        _react2.default.createElement(
+          'label',
+          null,
+          'Email',
+          _react2.default.createElement('input', { type: 'email', name: 'email' })
+        ),
         _react2.default.createElement(
           'button',
           { type: 'submit' },

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import NewStudentForm from './NewStudentForm';
 
 import StudentList from './StudentList.js';
 import SingleStudent from './SingleStudent.js';
+import NewStudentForm from './NewStudentForm';
 
 export default class Main extends Component {
   constructor(props) {
@@ -48,10 +48,10 @@ export default class Main extends Component {
     return (
       <div>
         <h1>Students</h1>
-        <button type="button" onClick={this.state.handleToggleClick}>
+        <button type="button" onClick={this.handleToggleClick}>
           Add New Student
-          {this.state.showForm ? <NewStudentForm /> : null}
         </button>
+        {this.state.showForm ? <NewStudentForm /> : null}
         <table>
           <thead>
             <tr>
